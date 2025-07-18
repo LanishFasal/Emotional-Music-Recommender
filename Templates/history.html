@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}History{% endblock %}
+{% block content %}
+<div class="container-fluid px-0">
+    <div class="d-flex align-items-center mb-4" style="gap:1rem;">
+        <span class="fs-2" style="color:#1db954;"><i class="fa fa-history"></i></span>
+        <h2 class="fw-bold mb-0" style="color:#fff; letter-spacing:1px;">Your History</h2>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10">
+            <div class="card bg-dark text-light shadow-lg border-0 p-4">
+                {% if history and history|length > 0 %}
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover align-middle mb-0">
+                        <thead>
+                            <tr>
+                                <th>Text</th>
+                                <th>Emotion</th>
+                                <th>Song</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in history %}
+                            <tr>
+                                <td>{{ item.text }}</td>
+                                <td><span class="badge" style="background:linear-gradient(90deg,#1db954,#1ed760);color:#18181f;">{{ item.emotion.title() }}</span></td>
+                                <td>
+                                    {% if item.video_id %}
+                                    <a href="https://www.youtube.com/watch?v={{ item.video_id }}" target="_blank" class="btn btn-sm btn-outline-success"><i class="fa fa-play"></i> Play</a>
+                                    {% else %}-{% endif %}
+                                </td>
+                                <td>{{ item.timestamp }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="d-flex flex-column align-items-center justify-content-center py-5">
+                    <span class="display-1 mb-3" style="color:#1db954;"><i class="fa fa-history"></i></span>
+                    <div class="alert alert-secondary text-center p-4 w-100" style="max-width:400px;">
+                        <h4 class="fw-bold mb-2">No history yet</h4>
+                        <p class="mb-0">You haven’t used the recommender yet.<br>Start by describing your mood on the Dashboard!</p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

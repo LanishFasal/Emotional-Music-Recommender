@@ -1,0 +1,7 @@
+flask
+pandas
+transformers
+torch
+scikit-learn
+youtube-search-python
+httpx==0.24.1

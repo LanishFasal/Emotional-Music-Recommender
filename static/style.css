@@ -1,0 +1,196 @@
+/* Premium Font */
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #18181f 0%, #434343 100%);
+    color: white;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Glassmorphism Navbar */
+.glass-navbar {
+    background: rgba(30, 30, 40, 0.85) !important;
+    backdrop-filter: blur(16px) saturate(180%);
+    border-radius: 24px;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: #fff !important;
+    font-size: 2rem;
+    letter-spacing: 1px;
+}
+
+.nav-btn {
+    border-radius: 16px;
+    padding: 10px 22px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    background: rgba(255,255,255,0.05);
+    border: 1.5px solid rgba(255,255,255,0.15);
+    color: #fff;
+    transition: all 0.2s cubic-bezier(.4,0,.2,1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.nav-btn:hover, .nav-btn:focus {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+/* Headings */
+h1, h2, h3 {
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+/* Form Inputs */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea,
+select {
+    border-radius: 14px !important;
+    padding: 14px !important;
+    border: none;
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.08);
+    color: white;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    transition: background 0.2s;
+}
+input:focus, textarea:focus, select:focus {
+    background-color: rgba(255,255,255,0.15);
+    outline: none;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 16px;
+    padding: 12px 24px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    transition: all 0.2s cubic-bezier(.4,0,.2,1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.btn-info {
+    background: linear-gradient(90deg, #ff5f6d 0%, #ffc371 100%);
+    border: none;
+    color: #fff;
+}
+
+.btn-info:hover {
+    background: linear-gradient(90deg, #ffc371 0%, #ff5f6d 100%);
+    transform: scale(1.06);
+}
+
+.btn-success {
+    background: linear-gradient(90deg, #43cea2 0%, #185a9d 100%);
+    border: none;
+    color: #fff;
+}
+
+.btn-success:hover {
+    background: linear-gradient(90deg, #185a9d 0%, #43cea2 100%);
+    transform: scale(1.06);
+}
+
+.btn-outline-light:hover,
+.btn-outline-danger:hover {
+    transform: scale(1.06);
+}
+
+/* Card Design */
+.card {
+    background: rgba(255, 255, 255, 0.10);
+    border-radius: 24px;
+    backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.18);
+    padding: 2rem;
+    transition: all 0.3s cubic-bezier(.4,0,.2,1);
+}
+
+.card:hover {
+    box-shadow: 0 12px 36px rgba(31, 38, 135, 0.22);
+    transform: translateY(-2px) scale(1.02);
+}
+
+/* Table */
+.table {
+    background-color: transparent;
+    color: white;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    vertical-align: middle;
+}
+
+/* Alerts */
+.alert {
+    border-radius: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    background: rgba(255,255,255,0.10);
+    color: #fff;
+    border: none;
+}
+
+/* Input Group in Playlist Form */
+.input-group input {
+    border-radius: 12px 0 0 12px !important;
+}
+.input-group button {
+    border-radius: 0 12px 12px 0 !important;
+}
+
+/* Iframe */
+iframe {
+    border: none;
+    border-radius: 18px;
+}
+
+/* Glass Footer */
+.glass-footer {
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    background: rgba(30, 30, 40, 0.85);
+    backdrop-filter: blur(12px) saturate(180%);
+    text-align: center;
+    color: #aaa;
+    font-size: 1rem;
+    border-top: 1.5px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px 24px 0 0;
+    box-shadow: 0 -4px 24px rgba(31, 38, 135, 0.10);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar .btn, .nav-btn {
+        margin-top: 10px;
+        width: 100%;
+    }
+    .input-group .form-control {
+        width: 100%;
+    }
+    .glass-navbar {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        border-radius: 0;
+    }
+    .glass-footer {
+        border-radius: 0;
+    }
+}

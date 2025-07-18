@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<div class="container-fluid px-0">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-7 col-lg-5">
+            <div class="card bg-dark text-light shadow-lg border-0 p-5 mt-5">
+                <div class="d-flex align-items-center mb-4" style="gap:1rem;">
+                    <span class="fs-2" style="color:#1db954;"><i class="fa fa-sign-in-alt"></i></span>
+                    <h2 class="fw-bold mb-0" style="color:#fff; letter-spacing:1px;">Login to Music Recommender</h2>
+                </div>
+                <form method="POST">
+                    <div class="mb-3">
+                        <input type="text" name="username" class="form-control form-control-lg rounded-pill" placeholder="Username" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" name="password" class="form-control form-control-lg rounded-pill" placeholder="Password" required>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-success btn-lg rounded-pill"><i class="fa fa-sign-in-alt me-2"></i>Login</button>
+                    </div>
+                </form>
+                <div class="text-center mt-3">
+                    New user? <a href="/signup" class="text-success fw-bold">Sign up here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

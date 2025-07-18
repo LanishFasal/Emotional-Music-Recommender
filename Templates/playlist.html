@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}Your Playlist{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-0">
+    <div class="d-flex align-items-center mb-4" style="gap:1rem;">
+        <span class="fs-2" style="color:#1db954;"><i class="fa fa-music"></i></span>
+        <h2 class="fw-bold mb-0" style="color:#fff; letter-spacing:1px;">Your Saved Playlists</h2>
+    </div>
+    {% if playlists %}
+        {% for playlist in playlists %}
+        <div class="card bg-dark text-light shadow-lg border-0 p-4 mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <div>
+                    <h4 class="fw-bold d-inline-block me-3">{{ playlist.name }}</h4>
+                    {% if not public %}
+                    <form method="POST" action="/rename_playlist/{{ playlist.id }}" class="d-inline-block" style="width:200px;">
+                        <input type="text" name="new_name" class="form-control form-control-sm d-inline-block w-50" placeholder="Rename playlist">
+                        <button class="btn btn-sm btn-outline-info">Rename</button>
+                    </form>
+                    <form method="POST" action="/delete_playlist/{{ playlist.id }}" class="d-inline-block ms-2" onsubmit="return confirm('Delete this playlist?');">
+                        <button class="btn btn-sm btn-outline-danger">Delete</button>
+                    </form>
+                    <a href="/share_playlist/{{ playlist.id }}" class="btn btn-sm btn-outline-success ms-2">Share</a>
+                    {% else %}
+                    <span class="badge bg-success">Shared Playlist</span>
+                    {% endif %}
+                </div>
+            </div>
+            {% if playlist.songs %}
+            <div class="row g-4">
+                {% for song in playlist.songs %}
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card bg-dark text-light shadow border-0 p-3 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <h6 class="text-success fw-bold mb-2">{{ song.emotion.title() }}</h6>
+                        </div>
+                        <iframe width="100%" height="200" class="rounded mb-2" src="https://www.youtube.com/embed/{{ song.song_id }}" allowfullscreen></iframe>
+                        {% if not public %}
+                        <div class="d-flex justify-content-between align-items-center">
+                            <form method="GET" action="/remove_song/{{ song.id }}" class="d-inline-block">
+                                <button class="btn btn-sm btn-outline-danger"><i class="fa fa-trash"></i></button>
+                            </form>
+                            <form method="POST" action="/move_song/{{ song.id }}/up" class="d-inline-block">
+                                <button class="btn btn-sm btn-outline-secondary"><i class="fa fa-arrow-up"></i></button>
+                            </form>
+                            <form method="POST" action="/move_song/{{ song.id }}/down" class="d-inline-block">
+                                <button class="btn btn-sm btn-outline-secondary"><i class="fa fa-arrow-down"></i></button>
+                            </form>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="alert alert-secondary text-center mt-4">
+                This playlist is empty.
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    {% else %}
+    <div class="d-flex flex-column align-items-center justify-content-center mt-5">
+        <span class="display-1 mb-3" style="color:#1db954;"><i class="fa fa-music"></i></span>
+        <div class="alert alert-secondary text-center p-4 w-100" style="max-width:400px;">
+            <h4 class="fw-bold mb-2">No playlists yet</h4>
+            <p class="mb-0">Create a playlist to get started!</p>
+        </div>
+    </div>
+    {% endif %}
+    <div class="text-center mt-4">
+        <a href="/dashboard" class="btn btn-lg btn-outline-success px-4"><i class="fa fa-arrow-left me-2"></i>Back to Dashboard</a>
+    </div>
+</div>
+{% endblock %}

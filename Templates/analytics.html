@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Analytics{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-0">
+    <div class="d-flex align-items-center mb-4" style="gap:1rem;">
+        <span class="fs-2" style="color:#1db954;"><i class="fa fa-chart-bar"></i></span>
+        <h2 class="fw-bold mb-0" style="color:#fff; letter-spacing:1px;">Mood Analytics</h2>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+            <div class="card bg-dark p-4 shadow-lg border-0 rounded-4">
+                <canvas id="emotionChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const ctx = document.getElementById('emotionChart').getContext('2d');
+        const emotionData = {{ emotion_data | tojson | safe }};
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: emotionData.labels,
+                datasets: [{
+                    label: 'Detected Emotions',
+                    data: emotionData.counts,
+                    backgroundColor: [
+                        '#1db954','#36a2eb','#ffcd56','#4bc0c0','#9966ff','#ff9f40'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: 'Your Emotional Trends Over Time',
+                        color: 'white'
+                    }
+                },
+                scales: {
+                    x: { ticks: { color: '#ddd' } },
+                    y: { ticks: { color: '#ddd' } }
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}
